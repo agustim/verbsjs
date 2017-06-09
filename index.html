@@ -15,26 +15,27 @@
         Conjuga el verb {{verb}} en el {{tempsVerbal}} ({{formaVerbal}})
       </div>
       <div>
-        Jo:<input ng-model="firstPersonSingular" placeholder="" style="background-color:{{status_fps}}"/>
+        Jo:<input ng-model="firstPersonSingular" placeholder="" style="{{status_fps}}"/>
       </div>
       <div>
-        Tu:<input ng-model="secondPersonSingular" placeholder="" style="background-color:{{status_sps}}"/>
+        Tu:<input ng-model="secondPersonSingular" placeholder="" style="{{status_sps}}"/>
       </div>
       <div>
-        Ell/Ella:<input ng-model="ThirdPersonSingular" placeholder="" style="background-color:{{status_tps}}"/>
+        Ell/Ella:<input ng-model="ThirdPersonSingular" placeholder="" style="{{status_tps}}"/>
       </div>
       <div>
-        Nosaltres:<input ng-model="firstPersonPlural" placeholder="" style="background-color:{{status_fpp}}"/>
+        Nosaltres:<input ng-model="firstPersonPlural" placeholder="" style="{{status_fpp}}"/>
       </div>
       <div>
-        Vosaltres:<input ng-model="secondPersonPlural" placeholder="" style="background-color:{{status_spp}}"/>
+        Vosaltres:<input ng-model="secondPersonPlural" placeholder="" style="{{status_spp}}"/>
       </div>
       <div>
-        Ells:<input ng-model="ThirdPersonPlural" placeholder="" style="background-color:{{status_tpp}}"/>
+        Ells:<input ng-model="ThirdPersonPlural" placeholder="" style="{{status_tpp}}"/>
       </div>
 
       <button ng-click="checkVerb()">Check!</button>
-      <div ng-message="required"> {{status}} </div>
+      <button ng-click="next()">Next</button>
+      <!-- <button ng-click="load()">test</button> -->
   </div>
  </div>
 

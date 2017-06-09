@@ -1,8 +1,8 @@
 var myApp = angular.module("verbsModule", [])
 myApp.controller("verbsController", function($scope) {
-    good = "#0f0"
-    bad = "#f00"
-    neutre = "#fff"
+    good = "background-color:#0f0"
+    bad = "background-color:#f00"
+    neutre = "background-color:#fff"
     $scope.checkVerb = function(){
       $scope.status_fps = ($scope.firstPersonSingular == verbs[verbId][formaId][tempsId][0]) ? good : bad;
       $scope.status_sps = ($scope.secondPersonSingular == verbs[verbId][formaId][tempsId][1]) ? good : bad;
@@ -10,28 +10,56 @@ myApp.controller("verbsController", function($scope) {
       $scope.status_fpp = ($scope.firstPersonPlural == verbs[verbId][formaId][tempsId][3]) ? good : bad;
       $scope.status_spp = ($scope.secondPersonPlural == verbs[verbId][formaId][tempsId][4]) ? good : bad;
       $scope.status_tpp = ($scope.ThirdPersonPlural == verbs[verbId][formaId][tempsId][5]) ? good : bad;
-
     }
-    $scope.status_fps = neutre
-    $scope.status_sps = neutre
-    $scope.status_tps = neutre
-    $scope.status_fpp = neutre
-    $scope.status_spp = neutre
-    $scope.status_tpp = neutre
+    $scope.next = function() {
+      if (($scope.firstPersonSingular == verbs[verbId][formaId][tempsId][0]) &&
+          ($scope.secondPersonSingular == verbs[verbId][formaId][tempsId][1]) &&
+          ($scope.ThirdPersonSingular == verbs[verbId][formaId][tempsId][2]) &&
+          ($scope.firstPersonPlural == verbs[verbId][formaId][tempsId][3]) &&
+          ($scope.secondPersonPlural == verbs[verbId][formaId][tempsId][4]) &&
+          ($scope.ThirdPersonPlural == verbs[verbId][formaId][tempsId][5])) {
+              $scope.configure();
+          }
+    }
+    $scope.load = function(){
+      $scope.firstPersonSingular = verbs[verbId][formaId][tempsId][0]
+      $scope.secondPersonSingular = verbs[verbId][formaId][tempsId][1]
+      $scope.ThirdPersonSingular = verbs[verbId][formaId][tempsId][2]
+      $scope.firstPersonPlural = verbs[verbId][formaId][tempsId][3]
+      $scope.secondPersonPlural = verbs[verbId][formaId][tempsId][4]
+      $scope.ThirdPersonPlural = verbs[verbId][formaId][tempsId][5]   
+    }
+    $scope.configure = function(){
+      $scope.firstPersonSingular= ""
+      $scope.secondPersonSingular=""
+      $scope.ThirdPersonSingular=""
+      $scope.firstPersonPlural=""
+      $scope.secondPersonPlural=""
+      $scope.ThirdPersonPlural=""
 
-    verbsOptions = ["cantar"]
-    formaOptions = ["indicatiu","subjuntiu","imperatiu"]
-    tempsOptions = []
-    tempsOptions["indicatiu"] = ["present", "perfet", "imperfet", "plusquamperfet", "passat simple", "passat anterior simple", "passat perifràstic", "passat anterior perifràstic",
-                    "futur simple", "futur perfet", "condicional","condicional perfet" ]
-    tempsOptions["subjuntiu"]= ["present", "perfet", "imperfet", "plusquamperfet"]
-    tempsOptions["imperatiu"] = ["present"]
-    verbId = verbsOptions[Math.floor((Math.random() * verbsOptions.length) )]
-    formaId = formaOptions[Math.floor((Math.random() * formaOptions.length))];
-    tempsId = tempsOptions[formaId][Math.floor((Math.random() * tempsOptions[formaId].length))];
-    $scope.verb = verbId
-    $scope.tempsVerbal = tempsId
-    $scope.formaVerbal = formaId
+      $scope.status_fps = neutre
+      $scope.status_sps = neutre
+      $scope.status_tps = neutre
+      $scope.status_fpp = neutre
+      $scope.status_spp = neutre
+      $scope.status_tpp = neutre
+
+      verbsOptions = ["cantar"]
+      formaOptions = ["indicatiu","subjuntiu","imperatiu"]
+      tempsOptions = []
+      tempsOptions["indicatiu"] = ["present", "perfet", "imperfet", "plusquamperfet", "passat simple", "passat anterior simple", "passat perifràstic", "passat anterior perifràstic",
+                      "futur simple", "futur perfet", "condicional","condicional perfet" ]
+      tempsOptions["subjuntiu"]= ["present", "perfet", "imperfet", "plusquamperfet"]
+      tempsOptions["imperatiu"] = ["present"]
+      verbId = verbsOptions[Math.floor((Math.random() * verbsOptions.length) )]
+      formaId = formaOptions[Math.floor((Math.random() * formaOptions.length))]
+      tempsId = tempsOptions[formaId][Math.floor((Math.random() * tempsOptions[formaId].length))]
+      $scope.verb = verbId
+      $scope.tempsVerbal = tempsId
+      $scope.formaVerbal = formaId
+    }
+
+    $scope.configure()
 
     verbs =
       { "cantar" :
@@ -41,11 +69,11 @@ myApp.controller("verbsController", function($scope) {
                 "imperfet": [ "cantava", "cantaves", "cantava", "cantàvem", "cantàveu", "cantaven"],
                 "plusquamperfet": [ "havia cantat","havies cantat","havia cantat","havíem cantat","havíeu cantat","havien cantat" ],
                 "passat simple": [ "cantí","cantares","cantà","cantàrem","cantàreu","cantaren" ],
-                "passat anterior simple": ["haguí","hagueres","hagué","haguérem","haguéreu","hagueren"],
+                "passat anterior simple": ["haguí cantat","hagueres cantat","hagué cantat","haguérem cantat","haguéreu cantat","hagueren cantat"],
                 "passat perifràstic": ["vaig cantar","vas cantar","va cantar","vam cantar","vau cantar","van cantar"],
                 "passat anterior perifràstic": ["vaig cantar","vas cantar","va cantar","vam cantar","vau cantar","van cantar"],
                 "futur simple": ["cantaré","cantaràs","cantarà","cantarem","cantareu","cantaran"],
-                "futur perfet": ["hauré cantat","hauràs cantat","haurà cantat","haurem  cantat","haureu cantat","hauran cantat"],
+                "futur perfet": ["hauré cantat","hauràs cantat","haurà cantat","haurem cantat","haureu cantat","hauran cantat"],
                 "condicional": ["cantaria","cantaries","cantaria","cantaríem","cantaríeu","cantarien"],
                 "condicional perfet": ["hauria cantat","hauries cantat","hauria cantat","hauríem cantat","hauríeu cantat","haurien cantat"]
               },
